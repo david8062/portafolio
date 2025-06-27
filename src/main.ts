@@ -13,7 +13,10 @@ import {
   Twitter,
   Instagram,
   Phone,
-  ChevronDown
+  ChevronDown,
+  Briefcase,
+  Calendar,
+  MapPin
 } from 'lucide-angular';
 
 bootstrapApplication(App, {
@@ -22,7 +25,7 @@ bootstrapApplication(App, {
     ...(appConfig.providers || []),
     importProvidersFrom(
       LucideAngularModule.pick({
-        Menu,  // Sin alias, directamente el nombre del import
+        Menu,
         X,
         Github,
         Linkedin,
@@ -30,8 +33,12 @@ bootstrapApplication(App, {
         Twitter,
         Instagram,
         Phone,
-        ChevronDown
+        ChevronDown,
+        Briefcase,
+        Calendar,
+        MapPin
       })
     )
   ]
 });
+

@@ -1,0 +1,49 @@
+<section id="experience" class="experience">
+  <div class="experience__container">
+    <div class="experience__header">
+      <h2 class="experience__title">Experiencia Laboral</h2>
+      <div class="experience__divider"></div>
+    </div>
+
+    <div class="experience__timeline">
+      <div class="experience__line"></div>
+
+      <div *ngFor="let exp of experiences; let i = index" class="experience__item">
+  <div
+    class="experience__dot"
+    [ngClass]="exp.current ? 'experience__dot--current' : 'experience__dot--past'"
+  >
+    <lucide-icon [name]="'briefcase'" [class.text-white]="exp.current" [class.text-purple]="!exp.current" />
+  </div>
+
+  <app-card class="experience__card" hover>
+    <div class="experience__card-header" (click)="toggle(i)">
+      <div class="experience__card-title">
+        <h3>{{ exp.title }}</h3>
+        <h4>{{ exp.company }}</h4>
+      </div>
+      <div class="experience__card-meta">
+        <div class="experience__meta">
+          <lucide-icon name="calendar" size="16" />
+          <span>{{ exp.period }}</span>
+        </div>
+        <div class="experience__meta">
+          <lucide-icon name="map-pin" size="16" />
+          <span>{{ exp.location }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Solo muestra si está expandido -->
+    <div class="experience__card-body" *ngIf="expandedIndex === i">
+      <p>{{ exp.description }}</p>
+      <div class="experience__tech-list">
+        <app-badge *ngFor="let tech of exp.technologies">{{ tech }}</app-badge>
+      </div>
+    </div>
+  </app-card>
+</div>
+
+    </div>
+  </div>
+</section>
