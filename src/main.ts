@@ -24,21 +24,22 @@ bootstrapApplication(App, {
   providers: [
     ...(appConfig.providers || []),
     importProvidersFrom(
-      LucideAngularModule.pick({
-        Menu,
-        X,
-        Github,
-        Linkedin,
-        Mail,
-        Twitter,
-        Instagram,
-        Phone,
-        ChevronDown,
-        Briefcase,
-        Calendar,
-        MapPin
-      })
-    )
+  LucideAngularModule.pick({
+    Menu,
+    X,
+    Github,
+    Linkedin,
+    Mail,
+    Twitter,
+    Instagram,
+    Phone,
+    ChevronDown,
+    Briefcase,
+    Calendar,
+    MapPin
+  })
+)
+
   ]
 });
 

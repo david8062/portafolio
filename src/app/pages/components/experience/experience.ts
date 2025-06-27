@@ -12,7 +12,7 @@ import { CardComponent } from '../../../shared/components/card/card';
 })
 export class ExperienceSectionComponent {
 
-  expandedIndex: number | null = 0; // primera abierta opcionalmente
+  expandedIndex: number | null = 0;
  experiences = [
     {
       title: 'Senior Full Stack Developer',

@@ -1,0 +1,55 @@
+<section id="projects" class="projects">
+  <div class="projects__container">
+    <div class="projects__header">
+      <h2 class="projects__title">Proyectos Destacados</h2>
+      <div class="projects__divider"></div>
+    </div>
+
+    <div class="projects__grid">
+      <app-card
+        *ngFor="let project of projects"
+        class="projects__card"
+        [ngClass]="{ 'projects__card--featured': project.featured }"
+        hover
+      >
+        <div class="projects__image-container">
+          <img [src]="project.image" [alt]="project.title" class="projects__image" />
+          <app-badge *ngIf="project.featured" class="projects__badge">Destacado</app-badge>
+        </div>
+
+        <div class="projects__content">
+          <h3 class="projects__title-text">{{ project.title }}</h3>
+          <p class="projects__description">{{ project.description }}</p>
+
+          <div class="projects__tech-list">
+            <app-badge *ngFor="let tech of project.technologies">{{ tech }}</app-badge>
+          </div>
+
+          <div class="projects__actions">
+            <app-button
+              tag="a"
+              variant="primary"
+              size="sm"
+              [href]="project.liveUrl"
+              target="_blank"
+            >
+              <lucide-icon name="external-link" size="16" />
+              Ver Proyecto
+            </app-button>
+
+            <app-button
+              tag="a"
+              variant="outline"
+              size="sm"
+              [href]="project.githubUrl"
+              target="_blank"
+            >
+              <lucide-icon name="github" size="16" />
+              Código
+            </app-button>
+          </div>
+        </div>
+      </app-card>
+    </div>
+  </div>
+</section>
