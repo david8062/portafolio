@@ -1,0 +1,43 @@
+<section id="hero" #hero class="hero">
+  <!-- Background -->
+  <div #background class="hero__background">
+    <div class="hero__background-overlay">
+      <div class="hero__background-overlay-gradient"></div>
+      <div class="hero__background-overlay-radial"></div>
+      <div class="hero__background-overlay-pulse hero__background-overlay-pulse--1"></div>
+      <div class="hero__background-overlay-pulse hero__background-overlay-pulse--2"></div>
+    </div>
+  </div>
+
+  <!-- Floating Elements -->
+  <div class="hero__floating">
+    <div class="hero__floating-element hero__floating-element--1"></div>
+    <div class="hero__floating-element hero__floating-element--2"></div>
+    <div class="hero__floating-element hero__floating-element--3"></div>
+    <div class="hero__floating-element hero__floating-element--4"></div>
+    <div class="hero__floating-element hero__floating-element--5"></div>
+    <div class="hero__floating-element hero__floating-element--6"></div>
+  </div>
+
+  <!-- Text Content -->
+  <div #text class="hero__content">
+    <h1 class="hero__content-title">Full Stack</h1>
+    <h2 class="hero__content-subtitle">Developer</h2>
+    <p class="hero__content-description">
+      Creando experiencias digitales excepcionales con tecnologías modernas
+    </p>
+    <div class="hero__content-tags">
+      <span class="hero__content-tag hero__content-tag--primary">TypeScript</span>
+      <span class="hero__content-tag hero__content-tag--secondary">PostgreSQL</span>
+      <span class="hero__content-tag hero__content-tag--accent">Angular</span>
+      <span class="hero__content-tag hero__content-tag--success">Spring Boot</span>
+    </div>
+  </div>
+
+  <!-- Scroll Button -->
+  <div class="hero__scroll" (click)="scrollToNext()">
+    <div class="hero__scroll-button">
+      <lucide-icon name="chevron-down"></lucide-icon>
+    </div>
+  </div>
+</section>

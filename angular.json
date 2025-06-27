@@ -27,8 +27,13 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles/global.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/styles"
+              ]
+            },
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -92,5 +97,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b06ce00a-9d6b-4634-a1eb-b3ed84408738"
   }
 }

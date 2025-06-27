@@ -1,0 +1,291 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+@use 'utilities' as *;
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  @include flex-center;
+  background: map-get($gradients, dark);
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    background: map-get($gradients, dark);
+
+    &-overlay {
+      position: absolute;
+      inset: 0;
+      opacity: 0.3;
+
+      &-gradient {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          45deg,
+          rgba(map-get($colors, primary), 0.1),
+          rgba(map-get($colors, secondary), 0.1)
+        );
+      }
+
+      &-radial {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(map-get($colors, primary), 0.1),
+          transparent 50%
+        );
+      }
+
+      &-pulse {
+        position: absolute;
+        width: 24rem;
+        height: 24rem;
+        border-radius: 50%;
+        
+        &--1 {
+          top: 25%;
+          right: 25%;
+          background: radial-gradient(
+            circle,
+            rgba(map-get($colors, secondary), 0.1),
+            transparent 70%
+          );
+          animation: pulse 4s ease-in-out infinite;
+        }
+
+        &--2 {
+          bottom: 25%;
+          left: 25%;
+          background: radial-gradient(
+            circle,
+            rgba(map-get($colors, primary), 0.1),
+            transparent 70%
+          );
+          animation: pulse 4s ease-in-out infinite 2s;
+        }
+      }
+    }
+  }
+
+  &__floating {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    &-element {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.6;
+
+      &--1 {
+        top: 5rem;
+        left: 5rem;
+        width: 1rem;
+        height: 1rem;
+        background: map-get($colors, primary);
+        @include neon-glow(map-get($colors, primary), md);
+        animation: bounce 2s infinite;
+      }
+
+      &--2 {
+        top: 10rem;
+        right: 8rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: map-get($colors, secondary);
+        @include neon-glow(map-get($colors, secondary), md);
+        animation: pulse 3s infinite 2s;
+      }
+
+      &--3 {
+        bottom: 8rem;
+        left: 25%;
+        width: 0.75rem;
+        height: 0.75rem;
+        background: map-get($colors, accent);
+        @include neon-glow(map-get($colors, accent), sm);
+        animation: ping 2s infinite 4s;
+      }
+
+      &--4 {
+        bottom: 5rem;
+        right: 5rem;
+        width: 1.25rem;
+        height: 1.25rem;
+        background: map-get($colors, success);
+        @include neon-glow(map-get($colors, success), md);
+        animation: bounce 2s infinite 1s;
+      }
+
+      &--5 {
+        top: 50%;
+        left: 2.5rem;
+        width: 0.5rem;
+        height: 0.5rem;
+        background: map-get($colors, warning);
+        @include neon-glow(map-get($colors, warning), sm);
+        animation: pulse 3s infinite 3s;
+      }
+
+      &--6 {
+        top: 75%;
+        right: 2.5rem;
+        width: 1rem;
+        height: 1rem;
+        background: map-get($colors, danger);
+        @include neon-glow(map-get($colors, danger), sm);
+        animation: bounce 2s infinite 5s;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    color: map-get($colors, text-primary);
+    padding: 0 1rem;
+
+    &-title {
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: map-get($gradients, neon);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 30px rgba(map-get($colors, primary), 0.5));
+
+      @media (min-width: 768px) {
+        font-size: clamp(4rem, 10vw, 8rem);
+      }
+    }
+
+    &-subtitle {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 300;
+      margin-bottom: 2rem;
+      color: map-get($colors, text-secondary);
+      filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+
+      @media (min-width: 768px) {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+      }
+    }
+
+    &-description {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      margin-bottom: 3rem;
+      max-width: 48rem;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+      color: map-get($colors, text-secondary);
+
+      @media (min-width: 768px) {
+        font-size: clamp(1.25rem, 3vw, 2rem);
+      }
+    }
+
+    &-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      font-size: clamp(0.875rem, 2vw, 1rem);
+
+      @media (min-width: 768px) {
+        font-size: clamp(0.875rem, 2vw, 1.125rem);
+      }
+    }
+
+    &-tag {
+      padding: 0.5rem 1rem;
+      background: rgba(map-get($colors, dark), 0.5);
+      backdrop-filter: blur(8px);
+      border-radius: 9999px;
+      border: 1px solid;
+      @include transition-normal;
+
+      &--primary {
+        border-color: rgba(map-get($colors, primary), 0.5);
+        color: lighten(map-get($colors, primary), 10%);
+        @include neon-glow(map-get($colors, primary), sm);
+
+        &:hover {
+          @include neon-glow(map-get($colors, primary), md);
+        }
+      }
+
+      &--secondary {
+        border-color: rgba(map-get($colors, secondary), 0.5);
+        color: lighten(map-get($colors, secondary), 10%);
+        @include neon-glow(map-get($colors, secondary), sm);
+
+        &:hover {
+          @include neon-glow(map-get($colors, secondary), md);
+        }
+      }
+
+      &--accent {
+        border-color: rgba(map-get($colors, accent), 0.5);
+        color: lighten(map-get($colors, accent), 10%);
+        @include neon-glow(map-get($colors, accent), sm);
+
+        &:hover {
+          @include neon-glow(map-get($colors, accent), md);
+        }
+      }
+
+      &--success {
+        border-color: rgba(map-get($colors, success), 0.5);
+        color: lighten(map-get($colors, success), 10%);
+        @include neon-glow(map-get($colors, success), sm);
+
+        &:hover {
+          @include neon-glow(map-get($colors, success), md);
+        }
+      }
+    }
+  }
+
+  &__scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    cursor: pointer;
+    @include transition-normal;
+
+    &:hover {
+      transform: translateX(-50%) scale(1.1);
+    }
+
+    &-button {
+      padding: 0.75rem;
+      border-radius: 50%;
+      border: 1px solid rgba(map-get($colors, primary), 0.5);
+      background: rgba(map-get($colors, dark), 0.3);
+      backdrop-filter: blur(8px);
+      @include neon-glow(map-get($colors, primary), sm);
+      @include transition-normal;
+
+      &:hover {
+        @include neon-glow(map-get($colors, primary), md);
+      }
+
+      svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: map-get($colors, primary);
+      }
+    }
+  }
+}

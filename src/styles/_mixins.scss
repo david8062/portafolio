@@ -1,0 +1,56 @@
+@use './variables' as *;
+
+@mixin neon-glow($color, $intensity: md) {
+  box-shadow: map-get($shadows, neon-#{$intensity}) rgba($color, 0.5);
+
+  &:hover {
+    box-shadow: map-get($shadows, neon-lg) rgba($color, 0.7);
+    transform: scale(1.05);
+  }
+}
+
+@mixin neon-text($color) {
+  color: $color;
+  text-shadow: 0 0 10px rgba($color, 0.5);
+
+  &:hover {
+    text-shadow: 0 0 20px rgba($color, 0.8);
+  }
+}
+
+@mixin neon-border($color, $width: 1px) {
+  border: $width solid rgba($color, 0.5);
+
+  &:hover {
+    border-color: rgba($color, 0.8);
+  }
+}
+@mixin full-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@mixin glass-effect($opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@mixin transition-normal {
+  transition: all map-get($transitions, normal);
+}

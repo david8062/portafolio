@@ -1,0 +1,87 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.neon-primary {
+  @include neon-glow(map-get($colors, primary));
+}
+
+.neon-secondary {
+  @include neon-glow(map-get($colors, secondary));
+}
+
+.neon-accent {
+  @include neon-glow(map-get($colors, accent));
+}
+
+.neon-success {
+  @include neon-glow(map-get($colors, success));
+}
+
+.text-neon-primary {
+  @include neon-text(map-get($colors, primary));
+}
+
+.text-neon-secondary {
+  @include neon-text(map-get($colors, secondary));
+}
+
+.glass {
+  @include glass-effect();
+}
+
+.transition-fast {
+  transition: all map-get($transitions, fast);
+}
+
+.transition-normal {
+  transition: all map-get($transitions, normal);
+}
+
+.transition-slow {
+  transition: all map-get($transitions, slow);
+}
+
+
+// Animations
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(180deg);
+  }
+}
+
+@keyframes pulse-neon {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-neon {
+  animation: pulse-neon 2s ease-in-out infinite;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease infinite;
+}

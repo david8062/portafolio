@@ -1,0 +1,33 @@
+$colors: (
+  primary: #06b6d4,
+  secondary: #a855f7,
+  accent: #ec4899,
+  success: #22c55e,
+  warning: #eab308,
+  danger: #ef4444,
+  dark: #111827,
+  darker: #000000,
+  light: #f9fafb,
+  text-primary: #ffffff,
+  text-secondary: #d1d5db,
+  text-muted: #9ca3af
+);
+
+$gradients: (
+  primary: linear-gradient(135deg, #{map-get($colors, primary)}, #{map-get($colors, secondary)}),
+  neon: linear-gradient(135deg, #{map-get($colors, primary)}, #{map-get($colors, accent)}),
+  dark: linear-gradient(135deg, #{map-get($colors, dark)}, #{map-get($colors, darker)})
+);
+
+$shadows: (
+  neon-sm: 0 0 10px,
+  neon-md: 0 0 20px,
+  neon-lg: 0 0 30px,
+  neon-xl: 0 0 40px
+);
+
+$transitions: (
+  fast: 0.2s ease,
+  normal: 0.3s ease,
+  slow: 0.5s ease
+);
